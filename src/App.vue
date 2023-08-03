@@ -2,19 +2,26 @@
   <div id="app" class="center">
     <h1>- Bicycle Rental Shop -</h1>
     <img style="width: 60px" src="@/assets/bicycle-icon.png" />
-    <p>Number of bicycles: {{ bicycleNum }}</p>
+    <p>Number of bicycles: {{ $store.state.bicycleNum }}</p>
     <button @click="plusOne" :disabled="isdisabledPlusFn">+1</button>&nbsp;
     <button @click="minusOne" :disabled="isdisabledMinusFn">-1</button>
-    <p v-if="condition" style="color: olive">Bikes are available.</p>
+    <p v-if="$store.state.condition" style="color: olive">
+      Bikes are available.
+    </p>
     <p v-else style="color: darkred">No bike is available.</p>
     <div>
       <hr />
       <h3>Rules</h3>
       <ol style="text-align: left; margin: 0 0 30px 60px">
-        <li v-for="(rule, index) in rules" :key="index">{{ rule }}</li>
+        <li v-for="(rule, index) in $store.state.rules" :key="index">
+          {{ rule }}
+        </li>
       </ol>
     </div>
-    <TotalIncome v-bind:parentMsg="rentNum" @resetAll="resetAllData()" />
+    <TotalIncome
+      v-bind:parentMsg="$store.state.rentNum"
+      @resetAll="resetAllData()"
+    />
   </div>
 </template>
 
@@ -25,17 +32,7 @@ export default {
   name: "App",
   components: { TotalIncome },
   data() {
-    return {
-      bicycleNum: 20,
-      rentNum: 0,
-      hourRentalFee: 100,
-      condition: true,
-      rules: [
-        "$100 each time.",
-        "Please return no later than 18:00.",
-        "Be safe.",
-      ],
-    };
+    return {};
   },
   computed: {
     isdisabledPlusFn() {
