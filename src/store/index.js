@@ -4,21 +4,41 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state() {
-    return {
-      bicycleNum: 20,
-      rentNum: 0,
-      hourRentalFee: 100,
-      condition: true,
-      rules: [
-        "$100 each time.",
-        "Please return no later than 18:00.",
-        "Be safe.",
-      ],
-    };
+  state: {
+    bicycleNum: 20,
+    rentNum: 0,
+    hourRentalFee: 100,
+    condition: true,
+    rules: [
+      "$100 each time.",
+      "Please return no later than 18:00.",
+      "Be safe.",
+    ],
+  },
+  mutations: {
+    plusOne: function (state) {
+      state.bicycleNum = state.bicycleNum + 1;
+      if (state.bicycleNum == 0) {
+        state.condition = false;
+      } else {
+        state.condition = true;
+      }
+    },
+    minusOne: function (state) {
+      state.bicycleNum = state.bicycleNum - 1;
+      state.rentNum += 1;
+      if (state.bicycleNum == 0) {
+        state.condition = false;
+      } else {
+        state.condition = true;
+      }
+    },
+    resetAllData: function (state) {
+      state.bicycleNum = 20;
+      state.rentNum = 0;
+    },
   },
   getters: {},
-  mutations: {},
   actions: {},
   modules: {},
 });

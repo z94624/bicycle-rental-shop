@@ -3,8 +3,11 @@
     <h1>- Bicycle Rental Shop -</h1>
     <img style="width: 60px" src="@/assets/bicycle-icon.png" />
     <p>Number of bicycles: {{ $store.state.bicycleNum }}</p>
-    <button @click="plusOne" :disabled="isdisabledPlusFn">+1</button>&nbsp;
-    <button @click="minusOne" :disabled="isdisabledMinusFn">-1</button>
+    <button @click="$store.commit('plusOne')" :disabled="isdisabledPlusFn">
+      +1</button>&nbsp;
+    <button @click="$store.commit('minusOne')" :disabled="isdisabledMinusFn">
+      -1
+    </button>
     <p v-if="$store.state.condition" style="color: olive">
       Bikes are available.
     </p>
@@ -18,10 +21,7 @@
         </li>
       </ol>
     </div>
-    <TotalIncome
-      v-bind:parentMsg="$store.state.rentNum"
-      @resetAll="resetAllData()"
-    />
+    <TotalIncome v-bind:parentMsg="$store.state.rentNum" @resetAll="$store.commit('resetAllData')" />
   </div>
 </template>
 
@@ -50,29 +50,7 @@ export default {
       }
     },
   },
-  methods: {
-    plusOne: function () {
-      this.bicycleNum = this.bicycleNum + 1;
-      if (this.bicycleNum == 0) {
-        this.condition = false;
-      } else {
-        this.condition = true;
-      }
-    },
-    minusOne: function () {
-      this.bicycleNum = this.bicycleNum - 1;
-      this.rentNum += 1;
-      if (this.bicycleNum == 0) {
-        this.condition = false;
-      } else {
-        this.condition = true;
-      }
-    },
-    resetAllData: function () {
-      this.bicycleNum = 20;
-      this.rentNum = 0;
-    },
-  },
+  methods: {},
 };
 </script>
 
