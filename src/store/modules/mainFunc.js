@@ -64,6 +64,7 @@ const mutations = {
     resetAllData: function (state) {
       state.bicycleNum = 20;
       state.rentNum = 0;
+      state.condition = true;
     },
   };
 
