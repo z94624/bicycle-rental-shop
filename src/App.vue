@@ -21,7 +21,7 @@
         </li>
       </ol>
     </div>
-    <TotalIncome v-bind:parentMsg="$store.state.rentNum" @resetAll="$store.commit('resetAllData')" />
+    <TotalIncome />
   </div>
 </template>
 

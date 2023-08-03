@@ -16,6 +16,7 @@ export default new Vuex.Store({
     ],
   },
   mutations: {
+    // App.vue
     plusOne: function (state) {
       state.bicycleNum = state.bicycleNum + 1;
       if (state.bicycleNum == 0) {
@@ -39,6 +40,7 @@ export default new Vuex.Store({
     },
   },
   getters: {
+    // App.vue
     isdisabledPlusFn(state) {
       if (state.bicycleNum == 20) {
         return true;
@@ -52,6 +54,10 @@ export default new Vuex.Store({
       } else {
         return false;
       }
+    },
+    // TotalIncome.vue
+    calculateIncome: function (state) {
+      return state.rentNum * 100;
     },
   },
   actions: {},
