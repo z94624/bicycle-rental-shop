@@ -38,7 +38,22 @@ export default new Vuex.Store({
       state.rentNum = 0;
     },
   },
-  getters: {},
+  getters: {
+    isdisabledPlusFn(state) {
+      if (state.bicycleNum == 20) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    isdisabledMinusFn(state) {
+      if (state.bicycleNum == 0) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+  },
   actions: {},
   modules: {},
 });

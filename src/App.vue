@@ -3,9 +3,9 @@
     <h1>- Bicycle Rental Shop -</h1>
     <img style="width: 60px" src="@/assets/bicycle-icon.png" />
     <p>Number of bicycles: {{ $store.state.bicycleNum }}</p>
-    <button @click="$store.commit('plusOne')" :disabled="isdisabledPlusFn">
+    <button @click="$store.commit('plusOne')" :disabled="$store.getters.isdisabledPlusFn">
       +1</button>&nbsp;
-    <button @click="$store.commit('minusOne')" :disabled="isdisabledMinusFn">
+    <button @click="$store.commit('minusOne')" :disabled="$store.getters.isdisabledMinusFn">
       -1
     </button>
     <p v-if="$store.state.condition" style="color: olive">
@@ -34,22 +34,7 @@ export default {
   data() {
     return {};
   },
-  computed: {
-    isdisabledPlusFn() {
-      if (this.bicycleNum == 20) {
-        return true;
-      } else {
-        return false;
-      }
-    },
-    isdisabledMinusFn() {
-      if (this.bicycleNum == 0) {
-        return true;
-      } else {
-        return false;
-      }
-    },
-  },
+  computed: {},
   methods: {},
 };
 </script>
