@@ -60,6 +60,12 @@ export default new Vuex.Store({
       return state.rentNum * 100;
     },
   },
-  actions: {},
+  actions: {
+    resetAllDataAsync: function(context) {
+      setTimeout(() => {
+        context.commit("resetAllData");
+      }, 3000);
+    },
+  },
   modules: {},
 });
